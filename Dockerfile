@@ -11,6 +11,7 @@ LABEL io.k8s.description="Platform for building and running Ruby 2.2 application
 RUN chown -R 1001:0 $GEM_HOME 
 USER 1001
 
+USER root
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 CMD ["/run.sh"]
