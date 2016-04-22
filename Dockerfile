@@ -12,7 +12,6 @@ CMD ["/run.sh"]
 RUN chown -R 1001:0 $GEM_HOME 
 USER 1001
 
-RUN bundle config --global frozen 1 
 WORKDIR /usr/src/app 
 
 ONBUILD COPY Gemfile /usr/src/app/ 
