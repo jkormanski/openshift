@@ -16,3 +16,8 @@ USER 1001
 ONBUILD COPY Gemfile /usr/src/app/ 
 ONBUILD COPY Gemfile.lock /usr/src/app/ 
 ONBUILD COPY . /usr/src/app
+
+RUN gem install bundler --version "$BUNDLER_VERSION" \ 
+&& bundle config --global path "$GEM_HOME" \ 
+&& bundle config --global bin "$GEM_HOME/bin" 
+
