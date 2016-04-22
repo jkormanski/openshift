@@ -3,7 +3,7 @@ FROM buildpack-deps:jessie
 EXPOSE 8080
 
 ENV HOME=/usr/src/app
-WORKDIR ${HOME} 
+WORKDIR $HOME 
 
 USER root
 ADD run.sh /run.sh
