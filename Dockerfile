@@ -15,3 +15,4 @@ USER 1001
 
 ONBUILD COPY Gemfile /usr/src/app/ 
 ONBUILD COPY Gemfile.lock /usr/src/app/ 
+ONBUILD COPY . /usr/src/app
