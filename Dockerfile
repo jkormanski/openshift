@@ -13,7 +13,6 @@ RUN chown -R 1001:0 $GEM_HOME
 USER 1001
 
 RUN bundle config --global frozen 1 
-RUN mkdir -p /usr/src/app 
 WORKDIR /usr/src/app 
 
 ONBUILD COPY Gemfile /usr/src/app/ 
