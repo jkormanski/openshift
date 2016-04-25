@@ -1,4 +1,6 @@
-FROM ruby:2.2.3
+FROM buildpack-deps:jessie
+
+EXPOSE 8080
 
 ENV HOME=/usr/src/app
 
@@ -12,6 +14,6 @@ USER 1001
 
 WORKDIR /usr/src/app 
 
-ADD Gemfile* /usr/src/app/
-RUN bundle install
-ADD . /usr/src/app/
+ONBUILD ADD Gemfile* /usr/src/app/
+ONBUILD RUN bundle install
+ONBUILD ADD . /usr/src/app/
