@@ -14,6 +14,8 @@ CMD ["/run.sh"]
 RUN chown -R 1001:0 /usr/src/app 
 USER 1001
  
+ENV BUNDLER_VERSION 1.12.3 
+RUN gem install bundler --version "$BUNDLER_VERSION" 
 
  
 ONBUILD COPY Gemfile /usr/src/app/ 
