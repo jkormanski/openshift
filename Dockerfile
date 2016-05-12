@@ -5,8 +5,6 @@ ADD run.sh /run.sh
 RUN chmod +x /*.sh
 CMD ["/run.sh"]
 
-RUN chown -R 1001:0 /usr/src/app 
-USER 1001
 
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
@@ -45,6 +43,9 @@ RUN set -ex \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& gem update --system $RUBYGEMS_VERSION \
 	&& rm -r /usr/src/ruby
+
+RUN chown -R 1001:0 /usr/src/ruby 
+USER 1001
 
 ENV BUNDLER_VERSION 1.12.3
 
