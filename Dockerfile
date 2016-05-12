@@ -14,6 +14,9 @@ USER 1001
 
 WORKDIR /usr/src/app 
 
+
 ONBUILD ADD Gemfile* /usr/src/app/
+CMD ["ls"]
+
 ONBUILD RUN bundle install
 ONBUILD ADD . /usr/src/app/
