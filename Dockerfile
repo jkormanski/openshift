@@ -14,8 +14,14 @@ CMD ["/run.sh"]
 RUN chown -R 1001:0 /usr/src/app 
 USER 1001
  
+
+ 
 ONBUILD COPY Gemfile /usr/src/app/ 
 ONBUILD COPY Gemfile.lock /usr/src/app/ 
+
+RUN cd /usr/src/app/
 ONBUILD RUN bundle install 
-ONBUILD COPY . /usr/src/app 
+ONBUILD COPY . /usr/src/app
+
+RUN bundle show
 
