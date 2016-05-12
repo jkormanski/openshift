@@ -44,9 +44,6 @@ RUN set -ex \
 	&& gem update --system $RUBYGEMS_VERSION \
 	&& rm -r /usr/src/ruby
 
-RUN chown -R 1001:0 /usr/src/ruby 
-USER 1001
-
 ENV BUNDLER_VERSION 1.12.3
 
 RUN gem install bundler --version "$BUNDLER_VERSION"
