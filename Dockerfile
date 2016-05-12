@@ -1,11 +1,5 @@
 FROM buildpack-deps:jessie
 
-USER root
-ADD run.sh /run.sh
-RUN chmod +x /*.sh
-CMD ["/run.sh"]
-
-
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
@@ -61,3 +55,7 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 
 CMD [ "irb" ]
 
+USER root
+ADD run.sh /run.sh
+RUN chmod +x /*.sh
+CMD ["/run.sh"]
