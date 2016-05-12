@@ -1,22 +1,13 @@
-FROM buildpack-deps:jessie
+FROM ruby:2.2 
 
-EXPOSE 8080
+# throw errors if Gemfile has been modified since Gemfile.lock 
+RUN bundle config --global frozen 1 
 
-ENV HOME=/usr/src/app
-
-USER root
-ADD run.sh /run.sh
-RUN chmod +x /*.sh
-CMD ["/run.sh"]
-
-RUN chown -R 1001:0 $GEM_HOME 
-USER 1001
-
+RUN mkdir -p /usr/src/app 
 WORKDIR /usr/src/app 
+ 
+ONBUILD COPY Gemfile /usr/src/app/ 
+ONBUILD COPY Gemfile.lock /usr/src/app/ 
+ONBUILD RUN bundle install 
+ONBUILD COPY . /usr/src/app 
 
-
-ONBUILD ADD Gemfile* /usr/src/app/
-CMD ["ls"]
-
-ONBUILD RUN bundle install
-ONBUILD ADD . /usr/src/app/
